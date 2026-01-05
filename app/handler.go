@@ -59,6 +59,12 @@ func html2Apk(w http.ResponseWriter, r *http.Request) error {
 		if err != nil {
 			return err
 		}
+	} else if so, ok := r.MultipartForm.File["so_file"]; ok {
+		apkEditor.SoFile, err = getFileData(so[0])
+		apkEditor.SoFileName = filepath.Base(so[0].Filename)
+		if err != nil {
+			return err
+		}
 	}
 
 	edit, err := apkEditor.Edit()
