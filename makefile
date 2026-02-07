@@ -13,4 +13,4 @@ build:
 build-windows:
 	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o apkEditor.exe
 upload:
-	aws s3 sync ./release s3://app/html2apk --region auto --endpoint-url https://408393949eb505f73a9af86454446f19.r2.cloudflarestorage.com
+	aws s3 sync ./release s3://app/html2apk
