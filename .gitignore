@@ -19,3 +19,6 @@ RunExeDemo/app/src/main/jniLibs/arm64-v8a/app_arm64.so
 RunExeDemo/app/src/main/jniLibs/arm64-v8a/qdapi_arm64.so
 demo.apk
 so/qdapi_arm64.so
+test.keystore
+/WebviewDemo/.lingma
+/as

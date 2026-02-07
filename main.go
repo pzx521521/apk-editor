@@ -3,11 +3,12 @@ package main
 import (
 	"embed"
 	"flag"
-	"github.com/pzx521521/apk-editor/editor"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/pzx521521/apk-editor/editor"
 )
 
 //go:embed release/*
@@ -24,6 +25,7 @@ func main() {
 	label := flag.String("label", "WebViewDemo", "应用的标签 (WebViewDemo)")
 	packageName := flag.String("package", "com.parap.webview", "应用的包名 (com.parap.webview)")
 	output := flag.String("o", "demo.apk", "输出文件路径")
+	icon := flag.String("icon", "", "应用的图标 (release/icon.png)")
 	// 解析命令行参数
 	flag.Parse()
 	args := flag.Args()
@@ -88,6 +90,11 @@ func main() {
 			Label:       *label,
 			Package:     *packageName,
 		}
+	}
+	if *icon != "" {
+		icon, err := os.ReadFile(*icon)
+		checkErr(err)
+		apkEditor.IconByte = icon
 	}
 	edit, err := apkEditor.Edit()
 	checkErr(err)

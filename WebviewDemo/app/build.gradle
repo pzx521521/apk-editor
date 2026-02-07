@@ -14,6 +14,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,7 +22,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+   // 禁用对 .png 文件的压缩（包括 ic_launcher.png）
+   aaptOptions {
+       noCompress "ic_launcher.png"
+   }
 }
 
 dependencies {

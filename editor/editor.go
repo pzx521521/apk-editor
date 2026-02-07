@@ -16,6 +16,8 @@ const ASSETS_DIR = "assets/"
 
 const Lib_DIR = "lib/arm64-v8a/"
 
+const Icon_Path = "res/drawable/ic_launcher.png"
+
 type Manifest struct {
 	VersionCode uint32
 	VersionName string
@@ -78,6 +80,7 @@ type ApkEditor struct {
 	apkRaw     []byte
 	keyBytes   []byte
 	certBytes  []byte
+	IconByte   []byte
 }
 
 func NewApkEditor(apk, keyBytes, certBytes []byte) *ApkEditor {
@@ -146,7 +149,10 @@ func (a *ApkEditor) modifyContent() ([]*MergeEntry, error) {
 		if filepath.Ext(soName) != ".so" {
 			soName += ".so"
 		}
-		mergeEntries = append(mergeEntries, &MergeEntry{Lib_DIR + soName, []byte(a.SoFile)})
+		mergeEntries = append(mergeEntries, &MergeEntry{Lib_DIR + soName, a.SoFile})
+	}
+	if a.IconByte != nil && len(a.IconByte) > 0 {
+		mergeEntries = append(mergeEntries, &MergeEntry{Icon_Path, a.IconByte})
 	}
 	return mergeEntries, nil
 }
