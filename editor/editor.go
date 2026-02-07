@@ -19,8 +19,8 @@ const Lib_DIR = "lib/arm64-v8a/"
 const Icon_Path = "res/drawable/ic_launcher.png"
 
 type Manifest struct {
-	VersionCode uint32
-	VersionName string
+	VersionCode uint32 `json:"version_code"`
+	VersionName string `json:"version_name"`
 	Label       string
 	Package     string
 }

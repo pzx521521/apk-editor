@@ -43,13 +43,15 @@ apkEditor <your-dir>/app.so
 + versionName
   对应manifest.android:versionName  
   用于显示软件版本号
++ Icon
+  用于修改图标,仅支持 png,最好 256*256/512*512 其他没有测试
 + package  
   ~~对应manifest.android:package    
   软件包名~~
   修改这个要改的东西太多了,请使用apktool
 + 生成默认的webview并修改信息
 ```shell
-./apkEditor -versionCode=222 -versionName="2.2.2" -label="NewApp" -o="/Users/parapeng/Downloads/app-new.apk" https://www.example.com
+./apkEditor -versionCode=222 -versionName="2.2.2" -label="NewApp" -icon="<your-dir>/icon.png" -o="/Users/parapeng/Downloads/app-new.apk" https://www.example.com
 ```
 
 # 原理
