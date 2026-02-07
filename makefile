@@ -9,8 +9,8 @@ apkEditor:
 install:
 	adb install /Users/parapeng/Downloads/app-new.apk
 build:
-	go build -ldflags "-s -w" -o apkEditor
+	go build -ldflags "-s -w" -o apkEditor ./cmd
 build-windows:
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o apkEditor.exe
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o apkEditor.exe ./cmd
 upload:
 	aws s3 sync ./release s3://app/html2apk
